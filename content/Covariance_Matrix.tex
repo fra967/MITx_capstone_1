@@ -46,6 +46,8 @@ bf{s}} \newcommand{\vt}{\mathbf{t}} \newcommand{\vu}{\mathbf{u}} \newcommand{\vv
 
 \newcommand{\deq}{:=}
 \newcommand{\conv}[2]{{#1 * #2}} % convolution of two functions
+\newcommand{\abs}[1]{|{#1}|}
+\newcommand{\ind}[1]{\mathds{1}(#1)} % Indicator function
 
 
 \begin {equation} \begin {split} 
@@ -92,3 +94,23 @@ The discrete analog is:
 \begin{equation} \begin {split}
 & (\conv {f} {g}) (n) \deq \sum_{m = -\infty}^{\infty} f(m) g(n - m)
 \end {split} \end{equation}
+
+\subsubsection {Kolmogrov-Smirnov (KS) test}
+\begin {equation} 
+\begin {split}
+& \text {$X_i$ are reordered so that } X_{(1)} \le X_{(2)} \le ... X_{(n)} \\
+& T_n = \sqrt{n} \max \limits_{i=1...n} \{ \max (\lvert \frac {i-1}{n} - F^0(X_{(i)}) \rvert , \lvert \frac {i}{n} - F^0(X_{(i)}) \rvert ) \} \\
+& \text {At level $\alpha$, } \psi_{\alpha}  = \mathds{1} (\frac {T_n}{\sqrt{n}} > q_{\alpha}) \\
+& \text {Where $q_{\alpha}$ is the $1 - \alpha$ quantile obtained from KS tables} \\
+\end {split}
+\end {equation}
+
+\subsubsection {Kolmogrov-Lilliefors (KL) test}
+\begin {equation} \begin {split}
+& T_n = \sqrt{n} \underset{i = 1 \ldots n} {\max} \abs {F_n(X_i) - \Phi_{\hat \mu, \hat \sigma^2}(X_i)} \\
+& \text {At level $\alpha$, } \psi_{\alpha}  = \ind{\frac {T_n}{\sqrt{n}} > q_{\alpha}} \\
+& \text {Where $q_{\alpha}$ is the $1 - \alpha$ quantile from KL tables} \\
+\\
+\\
+\end {split} \end {equation}
+
