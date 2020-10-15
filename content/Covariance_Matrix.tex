@@ -9,6 +9,7 @@ $\Sigma =\mathbb E[(X- \mu _{X})(X- \mu _{X})^ T] \\= \mathbb {E}[XX^ T] - \math
 % Reusing this file to add my notes
 
 \section {GLM one parameter}
+%%% RD19
 
 % Vector variables (in Bold Font style)
 \newcommand{\va}{\mathbf{a}} \newcommand{\vb}{\mathbf{b}} \newcommand{\vc}{\mathbf{c}} \newcommand{\vd}{\mathbf{d}} \newcommand{\ve}{\mathbf{e}} \newcommand{\vf}{\mathbf{f}} \newcommand{\vg}{\mathbf{g}} \newcommand{\vh}{\mathbf{h}} \newcommand{\vi}{\mathbf{i}} \newcommand
@@ -42,6 +43,9 @@ bf{s}} \newcommand{\vt}{\mathbf{t}} \newcommand{\vu}{\mathbf{u}} \newcommand{\vv
 
 \newcommand{\argmax}{\mathop{\mathrm{argmax}}}
 \newcommand{\argmin}{\mathop{\mathrm{argmin}}}
+
+\newcommand{\deq}{:=}
+\newcommand{\conv}[2]{{#1 * #2}} % convolution of two functions
 
 
 \begin {equation} \begin {split} 
@@ -77,3 +81,14 @@ $\vbeta$ can be estimated as:
  Poisson | $ e^{\theta} $ | $ \ln(\mu) $ \\
  Bernoulli | $ \ln (1 + e^{\theta}) $ | $ \ln (\frac {\mu} {1 - \mu}) $ \\
  Gamma | $ -\ln (-\theta) $ | $ \frac {-1} {\mu} $ \\
+
+\subsubsection {Convolution between two functions} 
+The convolution of two continuous functions is defined as:
+\begin{equation} \begin {split}
+& (\conv {f} {g}) (t) \deq \int_{- \infty}^{\infty} f(\tau) g(t - \tau) d\tau
+\end {split} \end{equation} 
+
+The discrete analog is:
+\begin{equation} \begin {split}
+& (\conv {f} {g}) (n) \deq \sum_{m = -\infty}^{\infty} f(m) g(n - m)
+\end {split} \end{equation}
