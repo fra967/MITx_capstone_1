@@ -21,6 +21,7 @@ bf{s}} \newcommand{\vt}{\mathbf{t}} \newcommand{\vu}{\mathbf{u}} \newcommand{\vv
 \newcommand{\vzero}{\mathbf{0}}
 \newcommand{\vone}{\mathbf{1}}
 \newcommand{\thetac}{\mathrm{\theta^{(0)}}}
+\newcommand{\norm}[1]{\|#1\|_2} % l2 norm for ordinary vectors
 
 % Scalars
 
@@ -38,6 +39,9 @@ bf{s}} \newcommand{\vt}{\mathbf{t}} \newcommand{\vu}{\mathbf{u}} \newcommand{\vv
 \newcommand{\conv}[2]{{#1 * #2}} % convolution of two functions
 \newcommand{\abs}[1]{|{#1}|}
 \newcommand{\ind}[1]{\mathds{1}(#1)} % Indicator function
+\newcommand{\PP}{\mathrm{P}} % Probability
+\newcommand{\EE}{\mathrm{E}} % Expectation
+
 
 
 \begin {equation} \begin {split} 
@@ -102,5 +106,56 @@ The discrete analog is:
 & \text {Where $q_{\alpha}$ is the $1 - \alpha$ quantile from KL tables} \\
 \\
 \\
+\end {split} \end {equation}
+
+\section {Tips}
+\begin {enumerate}
+\item (Continuous convolution) The area under the curve for the convolution expression is the product of the areas under the individual components of the convolution. See ML L12, tab 2. (This formulation regarding the area of the convolution likely has caveats).
+\item The expected value of a non-negative continuous random variable $X$ = $\EE[X] = \int \limits_0^\infty x f_X(x) dx = \int \limits_0^\infty \PP (X > t) dt$
+\item $\mX^T \mX = \sum \limits_{i=1}^{n} \vX_i \vX_i^T$ where $\mX \equiv n \times d + 1, \vX_i \equiv 1 \times d + 1$
+\item $\mX^T \vY = \sum \limits_{i=1}^{n} Y_i \vX_i$
+\end {enumerate}
+
+\section {Sums}
+\begin {equation} \begin {split}
+& \frac {1} {n} {\sum \limits_{i=1}^{n} (X_i - \mu)^2} = \frac {1} {n} {\sum \limits_{i=1}^{n} (X_i - \overline{X_n})^2} = \overline{(X_n^2)} - (\overline{X_n})^2  \\
+& \text {Where } \overline{(X_n^2)} = \frac {1}{n} (\sum \limits_{i=1}^{n} X_i^2) \text { and } \overline{X_n} = \frac {1}{n} (\sum \limits_{i=1}^{n} X_i) \\
+\end {split} \end {equation}
+
+% From Ben Lambert on Youtube
+\begin {equation} \begin {split}
+\sum \limits_{i=1}^{n}(X_i - \bar X_n)(Y_i - \bar Y_n) = \sum \limits_{i=1}^{n}(X_i - \bar X_n)Y_i = \sum \limits_{i=1}^{n}X_i(Y_i - \bar Y_n)
+\end {split} \end {equation}
+
+\section {Differentiating the dot product of two vectors}
+\begin {equation} \begin {split}
+& q = \vX^T \vbeta = \dot {\vbeta} {\vX} , \text {where $\vX, \vbeta$ are both $d \times 1$ vectors} \\
+& \frac {dq} {d \vbeta} = \vX \\
+& \frac {dq} {d (\vbeta^T)} = \vX^T \\
+\end {split} \end {equation}
+
+Differentiating the norm of a vector:
+\begin {equation} \begin {split}
+& q = \norm{\vbeta}^2 =  \text {where $\vbeta$ is a $d \times 1$ vector} \\
+& \frac {dq} {d \vbeta} = 2 \vbeta \\
+\end {split} \end {equation}
+
+Differentiating the squared error:
+\begin {equation} \begin {split}
+& q = (Y - \dot {\vbeta^T} {\vX})^2, \text {where $\vX, \vbeta$ are both $d \times 1$ vectors} \\
+& \frac {dq} {d \vbeta} = 2 (Y - \dot {\vbeta^T} {\vX}) (- \vX) \\
+\end {split} \end {equation}
+
+Differentiating the quadratic form:
+\begin {equation} \begin {split}
+& q = \vX^T \mA \vX, \text {where $\vX$ is a $d \times 1$ vector and $\mA$ is a $d \times d$ symmetric matrix} \\
+& \frac {dq} {d \vX} = 2 \mA \vX \\
+& \frac {dq} {d \vX^T} = (2 \mA \vX)^T = 2 \vX^T \mA^T = 2 \vX^T \mA \\
+\end {split} \end {equation}
+
+Differentiating a power of $e$:
+\begin {equation} \begin {split}
+& q = e^{\vX^T \vbeta} \text {where $\vX, \vbeta$ are both $d \times 1$ vectors} \\
+& \frac {dq} {d \vbeta} = \vX e^{\vX^T \vbeta} \\
 \end {split} \end {equation}
 
