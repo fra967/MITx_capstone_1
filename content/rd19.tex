@@ -46,12 +46,8 @@ bf{s}} \newcommand{\vt}{\mathbf{t}} \newcommand{\vu}{\mathbf{u}} \newcommand{\vv
 
 \begin {equation} \begin {split} 
 & f_\theta(y) = \exp (\frac {y \theta - b(\theta)} {\phi} + c(y, \phi)) \\
-& b(), c() \text { are known. $\phi$ is called the dispersion parameter} \\
-\end {split} \end {equation}
-
-\begin {equation} \begin {split} 
-& f_\theta(y) = \exp (\frac {y \theta - b(\theta)} {\phi} + c(y, \phi)) \\
-& b(), c() \text { are known. $\phi$ is called the dispersion parameter} \\
+& b(), c() \text { are known}  \\
+&\text {$\phi$ is called the dispersion parameter} \\
 \end {split} \end {equation}
 
 A canonical link function forces:
@@ -93,9 +89,11 @@ The discrete analog is:
 \begin {equation} 
 \begin {split}
 & \text {$X_i$ are reordered so that } X_{(1)} \le X_{(2)} \le ... X_{(n)} \\
-& T_n = \sqrt{n} \max \limits_{i=1...n} \{ \max (\lvert \frac {i-1}{n} - F^0(X_{(i)}) \rvert , \lvert \frac {i}{n} - F^0(X_{(i)}) \rvert ) \} \\
+& T_n = \sqrt{n} \max \limits_{i=1...n} \\
+& \{ \max (\lvert \frac {i-1}{n} - F^0(X_{(i)}) \rvert , \lvert \frac {i}{n} - F^0(X_{(i)}) \rvert ) \} \\
 & \text {At level $\alpha$, } \psi_{\alpha}  = \mathds{1} (\frac {T_n}{\sqrt{n}} > q_{\alpha}) \\
-& \text {Where $q_{\alpha}$ is the $1 - \alpha$ quantile obtained from KS tables} \\
+& \text {Where $q_{\alpha}$ is the} \\
+& \text {$1 - \alpha$ quantile obtained from KS tables} \\
 \end {split}
 \end {equation}
 
@@ -103,9 +101,8 @@ The discrete analog is:
 \begin {equation} \begin {split}
 & T_n = \sqrt{n} \underset{i = 1 \ldots n} {\max} \abs {F_n(X_i) - \Phi_{\hat \mu, \hat \sigma^2}(X_i)} \\
 & \text {At level $\alpha$, } \psi_{\alpha}  = \ind{\frac {T_n}{\sqrt{n}} > q_{\alpha}} \\
-& \text {Where $q_{\alpha}$ is the $1 - \alpha$ quantile from KL tables} \\
-\\
-\\
+& \text {Where $q_{\alpha}$ is the} \\
+& \text {$1 - \alpha$ quantile from KL tables} \\
 \end {split} \end {equation}
 
 \section {Tips}
