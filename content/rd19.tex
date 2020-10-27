@@ -41,6 +41,29 @@ bf{s}} \newcommand{\vt}{\mathbf{t}} \newcommand{\vu}{\mathbf{u}} \newcommand{\vv
 \newcommand{\ind}[1]{\mathds{1}(#1)} % Indicator function
 \newcommand{\PP}{\mathrm{P}} % Probability
 \newcommand{\EE}{\mathrm{E}} % Expectation
+\newcommand{\ssq}{\sigma^2}
+
+% Distributions
+\newcommand{\Ber}{{\rm Ber}}
+\newcommand{\Bin}{{\rm Bin}}
+\newcommand{\NBin}{{\rm NB}}
+\newcommand{\Geom}{{\rm Geom}}
+\newcommand{\Hyp}{{\rm Hyper}}
+\newcommand{\Cat}{{\rm Cat}}
+\newcommand{\Mult}{{\rm Mult}}
+\newcommand{\Dir}{{\rm Dir}}
+\newcommand{\Beta}{{\rm Beta}}
+\newcommand{\Pois}{{\rm Poisson}}
+\newcommand{\Unif}{{\rm Unif}}
+\newcommand{\N}{{\rm N}}
+\newcommand{\LN}{{\rm LN}}
+\newcommand{\Exp}{{\rm Exp}}
+\newcommand{\St}{{\rm St}}
+\newcommand{\Chisquare}{\chi^2}
+\newcommand{\Ga}{{\rm Ga}}
+\newcommand{\IG}{{\rm IG}}
+\newcommand{\InvGa}{{\rm IG}}
+
 
 
 
@@ -157,3 +180,75 @@ Differentiating a power of $e$:
 & \frac {dq} {d \vbeta} = \vX e^{\vX^T \vbeta} \\
 \end {split} \end {equation}
 
+% \begin {comment}
+% % the tables don't work with the cheatsheet template
+% \section {Tables}
+% \begin {table}
+% \begin{center}
+% \begin{tabular}{ |c|c|c|c|c|c|c| }
+% \hline
+%  Like. & Params & Prior & Params & ESS & Post Params & Wt. Mean  \\\hline 
+%  \Ber & $p$ & $\Beta$ & $\alpha, \beta$ & $\alpha + \beta$ & $\alpha + \sum x_i, \beta + n - \sum x_i$ & $\frac {\alpha + \beta} {\alpha + \beta + n} \frac {\alpha} {\alpha + \beta} + \frac {n} {\alpha + \beta + n} \frac {\sum x_i} {n + \sum x_i}$ \\\hline  
+%  \Pois & $\L$ & $\Ga$ & $\alpha, \beta$ & $\beta$ & $\alpha + \sum x_i, \beta + n$ & $\frac {\beta} {\beta + n} \frac {\alpha} {\beta} + \frac {n} {\beta + n} \frac {\sum x_i} {n}$  \\\hline  
+%  \Exp & $\L$ & $\Ga$ & $\alpha, \beta$ & $\alpha$ & $\alpha + n, \beta + \sum x_i$ & $$  \\\hline  
+%  \N & $\mu, \sigma_0^2$ & $\N$ & $m_0, s_0^2$ & $\frac {\sigma_0^2} {s_0^2}$ & Wt. Mean, $\frac {1} {\frac{n}{\sigma_0^2} + \frac{1}{s_0^2}}$ & $m_0 \frac {ESS}{ESS + n} + \bar x_n \frac {n} {ESS + n}$  \\\hline  
+%  \N & $\mu_0, \sigma^2$ & $\IG$ & $\alpha, \beta$ &  & $\alpha + \frac {n}{2}, \beta + \sum (x_i - \mu_0)$ &  \\\hline  
+%  \Cat & & \Dir & & & &  \\\hline  
+%  \Mult & & \Dir & & & &  \\\hline  
+% \end{tabular}
+% \caption{\label{tab: priors} Common Conjugate Priors}
+% \end{center}
+% \end {table}
+% 
+% \begin {table}
+% \begin{center}
+% \begin{tabular}{ |c|c|c| }
+% \hline
+%  Distribution & Unknown Parameters & MLEs \\\hline 
+%  \Ber & $p$ & $\bar X_n$  \\\hline  
+%  \Pois & $\lambda$ & $\bar X_n$  \\\hline  
+%  \Exp & $\lambda$ & $\frac {1} {\bar X_n}$  \\\hline  
+%  Shifted \Exp & $\lambda, a$ & $\frac {1} {\bar X_n - \min(X_i)}, \min(X_i)$  \\\hline
+%  \N & $\mu, \sigma^2$ & $\bar X_n, (\bar X_n^2) - (\bar X_n)^2$  \\\hline  
+%  \Unif $[0, \theta]$ & $\theta$ & $\max(X_i)$  \\\hline  
+% \end{tabular}
+% \caption{\label{tab: mle} Common MLEs}
+% \end{center}
+% \end {table}
+% 
+% \begin {table}
+% \begin{center}
+% \begin{tabular}{ |c|c|c| }
+% \hline
+%  Distribution & Parameter & Fisher Information \\\hline 
+%  \Ber & $p$ & $\frac {1} {p(1-p)}$  \\\hline  
+%  \Bin & $n, p$ & $\frac {n} {p(1-p)}$  \\\hline  
+%  \Exp & $\lambda$ & $\frac {1} {\lambda^2}$ \\\hline 
+%  Shifted \Exp & $\lambda, a$ & does not exist \\\hline 
+%  \Pois & $\lambda$ & $\frac {1} {\lambda}$ \\\hline 
+%  \Unif [0, $\theta$] & $\theta$ & \text {does not exist} \\\hline 
+%  \N & $\mu, \ssq$ & $[[1/\ssq, 0], [0, 1/(2 \sigma^4)]]$ \\\hline 
+% \end{tabular}
+% \caption{\label{tab: fisher} Common fisher information results}
+% \end{center}
+% \end {table}
+% 
+% \begin {table}
+% \begin{center}
+% \begin{tabular}{ |c|c|c|c| }
+% \hline
+%  Test & Purpose & Asymptotic & Pivotal \\\hline
+%  One-sample t & Is the mean of a sample the same as the mean of a Gaussian distribution & No & Yes \\\hline  
+%  Two-sample t & Are the means of two samples from Gaussian distributions identical & No & Yes \\\hline  
+%  Wald & Are the parameters estimated from a sample the same as those specified for a distribution & Yes & Yes \\\hline  
+%  Wilk's LRT & Are the parameters estimated from a sample the same as those specified for a distribution & Yes & Yes \\\hline  
+%  Chi-squared & Is a sample from a fully specified categorical distribution & Yes & Yes \\\hline  
+%  KS & Is a sample from a fully specified distribution & No & Yes \\\hline  
+%  KL & Is a sample from any Gaussian distributon & No & Yes \\\hline  
+%  QQ & Is an empirical distribution the same as a theoretical distribution & No & No \\\hline  
+% \end{tabular}
+% \caption{\label{tab: testtypes} Test types}
+% \end{center}
+% \end {table}
+% 
+% \end {comment}
